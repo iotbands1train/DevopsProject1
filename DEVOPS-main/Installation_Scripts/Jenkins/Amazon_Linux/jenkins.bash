@@ -1,3 +1,7 @@
+
+# jenkins.sh
+vi jenkins.sh 
+
 #!/bin/bash
 # REF: (https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/)
 # NOTE:
@@ -9,6 +13,8 @@ sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 sudo yum install java-17-amazon-corretto -y
 sudo yum install jenkins -y
+sudo /usr/sbin/alternatives --config java 
+sudo /usr/sbin/alternatives --config javac
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
 
@@ -24,3 +30,6 @@ echo "Your Jenkins Initial Password: $pass"
 # In case if Jenkins fails to starts, try to set Java version to 11,17,21 using below command
 # sudo /usr/sbin/alternatives --config java 
 # (Select the relevant Java version: 11,17 or 21)
+
+chmod a+x jenkins.sh
+./jenkins.sh

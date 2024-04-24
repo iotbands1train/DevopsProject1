@@ -54,7 +54,7 @@ resource "aws_security_group" "my_security_group1" {
 # Note: i. First create a pem-key manually from the AWS console
 #      ii. Copy it in the same directory as your terraform code
 resource "aws_instance" "my_ec2_instance1" {
-  ami                    = "ami-0cf10cdf9fcd62d37"
+  ami                    = "ami-080e449218d4434fa"
   instance_type          = "t2.medium"
   vpc_security_group_ids = [aws_security_group.my_security_group1.id]
   key_name               = "My_Key" # paste your key-name here, do not use extension '.pem'
@@ -66,7 +66,7 @@ resource "aws_instance" "my_ec2_instance1" {
   }
 
   tags = {
-    Name = "MASTER-SERVER"
+    Name = "JENKINS-MASTER SERVER"
   }
 
   user_data = <<-EOF

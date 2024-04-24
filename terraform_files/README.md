@@ -1,7 +1,7 @@
 ### TERRAFORM FILES
 ---
 
-![image](https://github.com/pandacloud1/DevopsProject1/assets/134182273/42370753-d725-4706-a0fa-39d5281e6546)
+![alt text](image.png)
 
 #### The above Terraform files will create 'Jenkins' & 'K8s' servers
 #### Master-Server --> Git, Maven, Docker, Trivy, Ansible

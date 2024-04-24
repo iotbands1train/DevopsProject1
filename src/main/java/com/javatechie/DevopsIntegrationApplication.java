@@ -14,6 +14,12 @@ public class DevopsIntegrationApplication {
 		return "Welcome to our DevOps Project !!";
 	}
 
+	@GetMapping("/welcome")
+	public String welcome(){
+		int x=1;
+		return "Welcome to our DevOps Project !!"+x;
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(DevopsIntegrationApplication.class, args);
 	}

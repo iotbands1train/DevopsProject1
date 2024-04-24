@@ -2,7 +2,7 @@
 # STEP1: CREATING A SECURITY GROUP FOR JENKINS SERVER
 # Description: Allow SSH, HTTP, HTTPS, 8080, 8081
 resource "aws_security_group" "my_security_group1" {
-  name        = "my-security-group1"
+  name        = "my-security-group1-${timestamp()}"
   description = "Allow SSH, HTTP, HTTPS, 8080 for Jenkins & Maven"
 
   # SSH Inbound Rules
@@ -89,12 +89,12 @@ resource "aws_instance" "my_ec2_instance1" {
       host        = self.public_ip
     }
 
-    inline = [        
+    inline = [
       # wait for 200sec before EC2 initialization
       "sleep 200",
       # Install Git 
       "sudo yum install git -y",
-      
+
       # Install Jenkins 
       # REF: https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/
       "sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo",

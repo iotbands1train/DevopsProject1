@@ -2,7 +2,7 @@
 # STEP1: CREATING A SECURITY GROUP FOR DOCKER-K8S
 # Description: K8s requires ports 22, 80, 443, 6443, 8001, 10250, 30000-32767
 resource "aws_security_group" "my_security_group2" {
-  name        = "my-security-group4"
+  name        = "my-security-group4-${timestamp()}"
   description = "Allow K8s ports"
 
   # SSH Inbound Rules
@@ -100,7 +100,7 @@ resource "aws_instance" "my_ec2_instance2" {
       host        = self.public_ip
     }
 
-      inline = [
+    inline = [
       "sleep 200",
 
       # Install Docker
@@ -110,7 +110,7 @@ resource "aws_instance" "my_ec2_instance2" {
       "sudo systemctl start docker",
       "sudo systemctl enable docker",
       "sudo chmod 777 /var/run/docker.sock",
-      
+
       # Install K8s
       # REF: https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
       "sudo setenforce 0",
@@ -133,9 +133,9 @@ resource "aws_instance" "my_ec2_instance2" {
       "kubectl apply -f https://docs.projectcalico.org/v3.18/manifests/calico.yaml",
       "kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.0/manifests/tigera-operator.yaml",
       "kubectl taint nodes --all node-role.kubernetes.io/control-plane-",
-      ]
-    }
-  
+    ]
+  }
+
 }
 
 # STEP3: OUTPUT PUBLIC IP OF EC2 INSTANCE

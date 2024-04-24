@@ -8,7 +8,11 @@ pipeline {
     agent any
     // DECLARE THE VARIABLES HERE:
     environment {
-        DOCKER_USERNAME = "nasirpatel"     // check the 'ID' in your Jenkins credentials
+        DOCKER_USERNAME = "iotbands1train"     // check the 'ID' in your Jenkins credentials
+        GITHUB_USERNAME = "iotbands1train"
+        PROJECT_NAME = "DevopsProject1" 
+        PIPELINE_NAME = "CI-PIPELINE"     
+    
     }
 
     stages {
@@ -25,7 +29,7 @@ pipeline {
             steps {
                 dir ("DevopsProject1"){
                   script {
-                    git branch: 'main', url: 'https://github.com/pandacloud1/DevopsProject1.git' 
+                    git branch: 'main', url: "https://github.com/${GITHUB_USERNAME}/${PROJECT_NAME}.git" 
                   }
                 }
             }

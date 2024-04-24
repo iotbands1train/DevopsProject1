@@ -94,7 +94,6 @@ resource "aws_instance" "my_ec2_instance1" {
       "sleep 200",
       # Install Git 
       "sudo yum install git -y",
-
       # Install Jenkins 
       # REF: https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/
       "sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo",
@@ -103,7 +102,6 @@ resource "aws_instance" "my_ec2_instance1" {
       "sudo yum install jenkins -y",
       "sudo systemctl enable jenkins",
       "sudo systemctl start jenkins",
-
       # Install Docker
       # REF: https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-docker.html
       "sudo yum update -y",
@@ -114,11 +112,9 @@ resource "aws_instance" "my_ec2_instance1" {
       # To avoid below permission error
       # Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock
       "sudo chmod 666 /var/run/docker.sock",
-
       # Install Trivy
       # REF: https://aquasecurity.github.io/trivy/v0.18.3/installation/
       "sudo rpm -ivh https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.rpm",
-
       # Install Ansible
       "sudo yum update -y",
       "sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm -y",

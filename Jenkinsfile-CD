@@ -6,7 +6,7 @@ pipeline {
     agent any
     // DECLARE THE VARIABLES HERE:
     environment {
-    NODE_IP = '172.31.19.125'   // paste your Node-Server private IP here
+    NODE_IP = '172.31.30.1'   // paste your Node-Server private IP here
     EC2_NAME = "ec2-user"                  // enter your AWS EC2 username
     PIPELINE_NAME = "CI-PIPELINE-V2"          // enter your pipeline name here 
     PROJECT_NAME = "DevopsProject1"        // enter your Devops project name here
@@ -37,7 +37,7 @@ pipeline {
             // i. Ensure to establish passwordless connection between Master & Node first
            // ii. Your deployment.yaml file must contain the Dockerhub image within the container block
             steps {
-              sshagent(['my_ec2_creds']) {          // store EC2 username & pem-key in Jenkins credentials
+              sshagent(['my_key']) {          // store EC2 username & pem-key in Jenkins credentials
                 sh "ssh -o StrictHostKeyChecking=no ${EC2_NAME}@${NODE_IP}"   // enter your Node-Server private IP here
                 sh "ssh -o StrictHostKeyChecking=no ${EC2_NAME}@${NODE_IP} kubectl apply -f deployment.yaml"
                 sh "ssh -o StrictHostKeyChecking=no ${EC2_NAME}@${NODE_IP} kubectl apply -f service.yaml"

@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: mycontainer
-        image: iotbands1train/ci-pipeline:latest   # replace with your Docker-image pushed on Dockerhub
+        image: iotbands1train/ci-pipeline-v2:latest   # replace with your Docker-image pushed on Dockerhub
         ports:
         - containerPort: 8080

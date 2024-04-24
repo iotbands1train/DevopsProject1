@@ -9,7 +9,7 @@ pipeline {
     // DECLARE THE VARIABLES HERE:
     environment {
         DOCKER_USERNAME = "iotbands1train"     // check the 'ID' in your Jenkins credentials 
-        PIPELINE_NAME = "CI-PIPELINE"     
+        PIPELINE_NAME = "CI-PIPELINE-V2"     
     }
 
     stages {
